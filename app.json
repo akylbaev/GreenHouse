@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "sdkVersion": "27.0.0",
+    "loading": {
+      "backgroundColor": "#ffffff",
+      "icon": "./Assets/logo.png"
+    },
+    "icon": "./Assets/icon.png",
+    "orientation": "portrait",
+    "version": "1.0.0",
+    "privacy": "public",
+    "name": "GreenHouse",
+    "slug": "greenhouse"
+    },
+"name": "GreenHouse",
+"displayName": "GreenHouse"
+}
