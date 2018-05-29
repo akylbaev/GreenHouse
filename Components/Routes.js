@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { StyleSheet, Text, View, Platform } from 'react-native';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 
 import SignIn from './Screens/SignIn';
 import GreenHouse from './Screens/GreenHouse';
@@ -16,22 +16,22 @@ export default class Routes extends React.Component {
   }
 }
 
-const AppStackNavigator = createStackNavigator({
+const AppStackNavigator = StackNavigator({
     AuthScreen: {
         screen: SignIn,
         navigationOptions: {
             header: null
         }
     },
-    TabBar: createBottomTabNavigator({
+    TabBar: {
+        screen: TabNavigator({
         GreenHouseScreen: {
             screen: GreenHouse,
             navigationOptions: {
                 tabBarIcon: ({tintColor}) => (
-                    <Icon name="home" style={{ color: tintColor }} size={25}/>
+                    <Icon name="home" style={{ color: tintColor }} size={21}/>
                 ),
                 title: "GreenHouse",
-                headerLeft: null
               }
         },
         AutomodeScreen: {
@@ -41,7 +41,6 @@ const AppStackNavigator = createStackNavigator({
                     <Icon name="retweet" style={{ color: tintColor }} size={21}/>
                 ),
                 title: "Automode",
-                header: null
               }
         },
         ProfileScreen: {
@@ -51,13 +50,20 @@ const AppStackNavigator = createStackNavigator({
                     <Icon name="user" style={{ color: tintColor }} size={21}/>
                 ),
                 title: "Profile",
-                header: null
               }
         },
     },{
         animationEnabled: false,
         swipeEnabled: false,
+        tabBarPosition: "bottom",
         tabBarOptions: {
+            style: {
+            ...Platform.select({
+                android: {
+                backgroundColor: 'white',
+                }
+            })
+            },
           activeTintColor: '#4ec3cd',
           inactiveTintColor: '#A1A1A1',
           showIcon: true,
@@ -67,4 +73,10 @@ const AppStackNavigator = createStackNavigator({
           renderIndicator: () => null,
         }
       }),
+      
+    }
+}, {
+    navigationOptions: {
+        headerLeft: null
+    }
 })
